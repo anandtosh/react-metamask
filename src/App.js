@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import react,{useState} from 'react';
 import './App.css';
+import MetaMask from './components/MetaMask.js';
 
 function App() {
+  const [metaMaskAvailable, setMetaMaskAvailable] = useState(typeof window.ethereum !=="undefined")
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App-Item">
+        {
+          metaMaskAvailable?<MetaMask/>:"Looks metaMask is not installed or isn't enabled"
+        }
+        
+      </div>
     </div>
   );
 }
